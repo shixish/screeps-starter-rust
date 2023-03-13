@@ -8,8 +8,8 @@ mod logging;
 
 fn main() {
     logging::setup_logging(logging::Info);
-
-    js! {
+    
+    js! { @(no_return)
         var game_loop = @{game_loop};
 
         module.exports.loop = function() {
@@ -28,7 +28,7 @@ fn main() {
                 module.exports.loop = wasm_initialize;
             }
         }
-    }
+    };
 }
 
 fn game_loop() {
